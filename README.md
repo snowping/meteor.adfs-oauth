@@ -4,7 +4,7 @@
 
 This meteor package allows you to authenticate to a Microsoft ADFS3 Oauth service. The package was greatly inspired by the offical oauth packages *accounts-google* and *google*. 
 
->>**Please note that this is a prototype implementation. Use it at your own risk**.
+>**Please note that this is a prototype implementation. Use it at your own risk**.
 
 ### Features
   - Compatibility with accounts-ui package
@@ -66,6 +66,7 @@ Oauth has been widely used as an authentication architecture for modern web appl
     - Claim rule name: any name
     - Attribute store: Active Directory
     - Mapping of LDAP attributes to outgoing claim types
+    
     | LDAP Atribute       | Outgoing Claim Type | 
     | ------------------- |--------------------:|
     | Given-Name          | Given Name          |
@@ -115,7 +116,7 @@ Oauth has been widely used as an authentication architecture for modern web appl
   - Param 2 "client_id" => value "123456" is a registered adfsclient, use command "Get-AdfsClient" to list all clients on server
   - Param 3 "redirect_uri" => where to redirect and apply the code param e.g. "http://localhost:3000/_oauth/adfsoauth&code=lsdkjflsjdflkjd8234lk324o7234kjn23kl4j..."
   - Param 4 "resource" => Relying Trusted Party (it is required in params but not used by your meteor app, you can use a fake one here) 
-  
+
 - If request is successful it should show you either a login form or redirect you straight away (kerberos auth when already within domain)
 - Request new token
     ```
@@ -125,7 +126,7 @@ Oauth has been widely used as an authentication architecture for modern web appl
   - Param 2 "client_id" => value e.g. "123456" (registered adfs client)
   - Param 3 "redirect_uri" => value e.g. "http://localhost:3000/_oauth/adfsoauth" (where to send token to)
   - Param 4 "code" => value "<code>" received from step above through get param
-  
+
   >This step should be done on server as recommended by Oauth definition (this meteor package does that) => grant_type: authorization_code. Normally in such request we have also a param "client_secret" included which should be saved somewhere safe within the server (backend). This makes the oauth autheration even more secure. Only trusted clients can issue tokens! However, ADFS 3 Oauth does currently not support "client_secret" parameter. Therefore, requests can be made on servers and clients (browser).
 
 - Get JWT token as JSON response (example response)
