@@ -13,7 +13,8 @@ This meteor package allows you to authenticate to a Microsoft ADFS3 Oauth servic
 
 ### Todo
 - Add unit/integration tests
-- Ability to receive encrypted tokens
+- Ability to use encrypted tokens (decrypt using private cert)
+- Security review
 
 ### Side note
 Oauth has been widely used as an authentication architecture for modern web applications, especially in order to integrate trusted third party accounts like Facebook, Twitter, Google etc. In Enterprise environments though the adoption is quite small. Microsoft however released the ability to use Oauth2 with the new version ADFS 3.0 (Active Directory Federation Services 3.0). It comes by default with Windows 2012 R2 Enterprise ([more details](https://technet.microsoft.com/en-us/library/dn633593.aspx)). Unfortunately, the oauth implementation of Microsoft slightly differs from standard specification ([RFC 6749](http://tools.ietf.org/html/rfc6749)) and implements only a [subset](http://blogs.technet.com/b/maheshu/archive/2015/04/28/oauth-2-0-support-in-adfs-on-windows-server-2012-r2.aspx) of the features. This package aims to help you get started using AD Authentication in your own meteor project. 
@@ -31,7 +32,7 @@ Oauth has been widely used as an authentication architecture for modern web appl
 1. Start powershell console as Administrator
 2. Create adfs client id for your meteor app 
     ```
-    Add-ADFSClient -Name "Meteor Demo App" -ClientId "meteordemoapp" -RedirectUri="http://localhost:000/_oauth/adfsoauth"
+    Add-ADFSClient -Name "Meteor Demo App" -ClientId "meteordemoapp" -RedirectUri="http://localhost:3000/_oauth/adfsoauth"
     ```
 3. Check your configuration using
     ```
@@ -156,6 +157,7 @@ Oauth has been widely used as an authentication architecture for modern web appl
 
 #### Troubleshooting ADFS errors (eventlog on windows server)
 - The Kerberos client received a KRB_AP_ERR_MODIFIED error from the server fs.service
+
     ```
     setspn -D http/srv2012r2test.dev.intra.domain.ch
     setspn -A http/srv2012r2test.dev.intra.domain.ch fs.service
