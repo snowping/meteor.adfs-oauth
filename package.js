@@ -1,6 +1,6 @@
 Package.describe({
   name: 'snowping:adfs-oauth',
-  version: '0.0.1',
+  version: '0.0.2',
   summary: 'Oauth2 authentication using Microsoft ADFS3 Oauth service (Active Directory)',
   // URL to the Git repository containing the source code for this package.
   git: '',
