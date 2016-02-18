@@ -32,7 +32,7 @@ Oauth has been widely used as an authentication architecture for modern web appl
 1. Start powershell console as Administrator
 2. Create adfs client id for your meteor app 
     ```
-    Add-ADFSClient -Name "Meteor Demo App" -ClientId "meteordemoapp" -RedirectUri="http://localhost:3000/_oauth/adfsoauth"
+    Add-ADFSClient -Name "Meteor Demo App" -ClientId "meteordemoapp" -RedirectUri "http://localhost:3000/_oauth/adfsoauth"
     ```
 3. Check your configuration using
     ```
