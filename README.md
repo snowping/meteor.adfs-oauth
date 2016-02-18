@@ -80,16 +80,40 @@ Oauth has been widely used as an authentication architecture for modern web appl
     ```
     meteor add snowping:adfs-oauth
     ```
-- Configure package - go to your app e.g. http://localhost:3000, click on 'Register' -> 'CONFIGURE ADFSOAUTH'
+- GUI Configuration: Configure package - go to your app e.g. http://localhost:3000, click on 'Register' -> 'CONFIGURE ADFSOAUTH'
     - Client ID : meteordemoapp
     - Client secret: none 
     - ADFS Public Certificate Path : /private/certs/cert.cer
     - Relying Party Trust Identifier : meteordemoapp
     - Field for profile name mapping : commonname
-    - URL to ADFS backend : https://<your-adfs-host>/adfs/oauth2
+    - URL to ADFS backend : https://your-adfs-host/adfs/oauth2
     
     > Client secret is not required by the ADFS Oauth but inherited by default from official oauth package, just use 'none' here
    
+- Without GUI:
+    ```
+    meteor add service-configuration
+    ```
+    
+    ```
+    Meteor.startup(function() {
+        ServiceConfiguration.configurations.upsert(
+            { service: "adfsoauth" },
+            {
+                $set: {
+                    clientId: "meteordemoapp",
+                    loginStyle: "popup",
+                    secret: "none",
+                    publicCertPath : "/private/certs/cert.cer",
+                    resource : "meteordemoapp",
+                    profileNameField : "commonname",
+                    oauthAdfsUrl : "https://your-adfs-host/adfs/oauth2"
+                }
+            }
+        );
+    });
+    ```
+    
 - Optional auto login code, useful when the only auth available => oauth workflow starts without requiring users to click sign in)
     ```
     if (Meteor.isClient) {
