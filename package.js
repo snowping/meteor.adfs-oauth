@@ -23,7 +23,7 @@ Package.onUse(function(api) {
   api.use('accounts-oauth', ['client', 'server']);
 
   //Add npm module files
-  api.addFiles(['adfs-oauth:package.js'], ['server']);
+  api.addFiles(['adfs-oauth_package.js'], ['server']);
 
   api.addFiles(['adfs-oauth_configure.html', 'adfs-oauth_configure.js'], 'client');
   api.addFiles('adfs-oauth_server.js', 'server');
