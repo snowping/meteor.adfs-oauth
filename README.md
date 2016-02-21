@@ -75,6 +75,9 @@ Oauth has been widely used as an authentication architecture for modern web appl
     | User-Principal-Name | Common Name         |
     | E Mail-Addresses    | E-Mail Address      |
 
+    - IMPORTANT: Add new transformation rule to map an id field (required by Meteor oauth)
+    - Example: Incoming claim "UPN" --> custom claim "id"
+ 
 #### Setup oauth within meteor app
 - Install package
     ```
